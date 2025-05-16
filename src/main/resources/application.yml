@@ -1,0 +1,31 @@
+server:
+  port: 7080
+  tomcat:
+    use-apr: NEVER
+
+logging:
+  level:
+    root: debug
+
+spring:
+  application:
+    name: blog-ai
+  output:
+    ansi:
+      enabled: always
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_DATABASE}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update     # DDL ?? ????
+      show-sql: true       # SQL ?? ???
+    properties:
+      hibernate:
+        format_sql: true   # SQL ??? ???
+        query:
+          named_query_lookups_enabled: false
+    open-in-view: false    # OSIV ???? (?? ???)
