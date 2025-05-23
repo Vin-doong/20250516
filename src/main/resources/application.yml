@@ -14,18 +14,28 @@ spring:
     ansi:
       enabled: always
 
+  # MySQL 설정
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_DATABASE}
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_DATABASE}?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+  
+  # MongoDB 설정
+  data:
+    mongodb:
+      host: ${MONGO_HOST}
+      port: ${MONGO_PORT}
+      database: ${MONGO_DATABASE}
+      username: ${MONGO_USERNAME}
+      password: ${MONGO_PASSWORD}
+      authentication-database: admin
+
   jpa:
     hibernate:
-      ddl-auto: update     # DDL ?? ????
-      show-sql: true       # SQL ?? ???
+      ddl-auto: update
     properties:
       hibernate:
-        format_sql: true   # SQL ??? ???
-        query:
-          named_query_lookups_enabled: false
-    open-in-view: false    # OSIV ???? (?? ???)
+        format_sql: true
+        show_sql: true
+    open-in-view: false
